@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-<<<<<<< HEAD
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
@@ -31,29 +30,3 @@ def get_application() -> FastAPI:
     application.include_router(api_router_v1, prefix=f"{settings.API_PREFIX}/v1")
     init_mongoengine(settings)
     return application
-=======
-
-app = FastAPI()
-
-@app.get("/")
-
-async def root():
-
-    return {"message": "Hello Satan"}
-
-@app.get("/result/{score}")
-
-async def result_exam(score):
-
-    score = int(score)
-
-    if(score >= 50):
-
-        result = "Pass"
-
-    else:    
-
-        result = "No pass"
-
-    return {"your result is": result}
->>>>>>> ad6c22296dcc87eda3eea1367e446f3b87f05c1e
