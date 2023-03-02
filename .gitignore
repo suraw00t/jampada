@@ -5,6 +5,7 @@ frontend/node_modules
 backend/venv
 /.pnp
 .pnp.js
+*__pycache__/
 
 # testing
 /coverage
@@ -24,3 +25,9 @@ yarn-debug.log*
 yarn-error.log*
 
 *.swp
+*.conf
+
+
+__pycache__/
+*.py[cod]
+*$py.class
