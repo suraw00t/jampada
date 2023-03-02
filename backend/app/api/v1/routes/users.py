@@ -15,4 +15,4 @@ router = APIRouter()
 
 @router.get("/test", response_model_by_alias=False)
 def test():
-    return list(["Testing"])
+    return dict({"name": "Testing"})
