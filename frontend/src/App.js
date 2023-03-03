@@ -1,25 +1,39 @@
-import logo from "./logo.svg";
-import "./App.css";
+
+// import './App.css';
+import Home from './page/Home';
+import { About } from './page/About';
+import { Show } from './component/Show';
+import { Input } from './component/Input';
+//! Page for Sports
+import { Bad } from './page/Bad';
+import { Bball } from './page/Bball';
+import { Fball } from './page/Fball';
+import { Vball } from './page/Vball';
+import { Pong } from './page/Pong';
+import { Ten } from './page/Ten';
+
+import Nav from './page/Navbar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React Hello world
-                </a>
-            </header>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Nav />
+      {/* <Input /> */}
+      <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/about' element={<About/>} />
+          <Route path='/bad' element={<Bad/>} />
+          <Route path='/bball' element={<Bball/>} />
+          <Route path='/fball' element={<Fball/>} />
+          <Route path='/vball' element={<Vball/>} />
+          <Route path='/pong' element={<Pong/>} />
+          <Route path='/ten' element={<Ten/>} />
+      </Routes>
+  
+      
+    </div>
+  );
 }
 
 export default App;
