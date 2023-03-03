@@ -12,6 +12,7 @@ import { Vball } from './page/Vball';
 import { Pong } from './page/Pong';
 import { Ten } from './page/Ten';
 import { Signin } from './page/Signin';
+import { Register } from './page/Register';
 
 import Nav from './page/Navbar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -30,6 +31,8 @@ function App() {
           <Route path='/pong' element={<Pong/>} />
           <Route path='/ten' element={<Ten/>} />
           <Route path='/Signin' element={<Signin/>}/>
+          <Route path='/Register' element={<Register/>}/>
+
       </Routes>
   
       
