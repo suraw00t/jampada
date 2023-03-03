@@ -14,19 +14,19 @@ const Home =()=>{
         <div>
           
             <ul>
-                <NavLink activeClassname="active" to="/bad">
+                <NavLink activeclassname="active" to="/bad">
                     <div class="box">
                         <img src={bad} alt=""/>
                     </div>
                 </NavLink>
 
-                <NavLink activeClassname="active" to="/bball">
+                <NavLink activeclassname="active" to="/bball">
                     <div class="box">
                         <img src={bball} alt=""/>
                     </div>
                 </NavLink>
 
-                <NavLink activeClassname="active" to="/fball">
+                <NavLink activeclassname="active" to="/fball">
                     <div class="box">
                         <img src={fball} alt=""/>
                     </div>  
@@ -34,19 +34,19 @@ const Home =()=>{
                 
             </ul>
             <ul>
-                <NavLink activeClassname="active" to="/pong">
+                <NavLink activeclassname="active" to="/pong">
                     <div class="box">
                         <img src={pong} alt=""/>
                     </div>
                 </NavLink>
                 
-                <NavLink activeClassname="active" to="/ten">
+                <NavLink activeclassname="active" to="/ten">
                     <div class="box">
                         <img src={ten} alt=""/>
                     </div>
                 </NavLink>
                 
-                <NavLink activeClassname="active" to="/vball">
+                <NavLink activeclassname="active" to="/vball">
                     <div class="box">
                         <img src={vball} alt=""/>
                     </div>

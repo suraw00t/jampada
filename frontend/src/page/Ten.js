@@ -1,7 +1,10 @@
 import React from 'react'
+import { Room } from '../component/Room'
 
 export const Ten = () => {
   return (
-    <div>T</div>
+    <div>
+      <Room/>
+    </div>
   )
 }

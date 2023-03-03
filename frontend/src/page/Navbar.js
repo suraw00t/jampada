@@ -23,10 +23,10 @@ export default function Nav() {
             
             <nav className = "nav">
                 <ul>
-                    <NavLink exact activeClassname="active" to="/">
+                    <NavLink exact="true" className="active" to="/">
                         <li>Home</li>
                     </NavLink>
-                    <NavLink activeClassname="active" to="/about">
+                    <NavLink activeclassname="active" to="/about">
                         <li>About</li>
                     </NavLink>
                 </ul>
