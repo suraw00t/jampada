@@ -1,5 +1,6 @@
 import './Navbar.css'
 import psu from '../images/psu.png'
+import log1 from '../images/log1.png'
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components'
@@ -21,7 +22,7 @@ export default function Nav() {
                 <Link to="/"><img src={psu} alt=""/></Link>
             </div>
             <div className="logo">
-                <Link to="/Signin"><img src={psu} alt=""/></Link>
+                <Link to="/Signin"><img src={log1} alt=""/></Link>
             </div>
             <nav className = "nav">
                 <ul>
