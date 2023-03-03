@@ -1,4 +1,6 @@
 from .users import User
+from .sports import Sport
+from .topics import Topic
 
 
 def init_mongoengine(settings):

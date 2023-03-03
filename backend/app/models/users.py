@@ -4,6 +4,7 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+
 class User(me.Document):
     meta = {
         "collection": "users",
@@ -16,7 +17,6 @@ class User(me.Document):
     email = me.StringField(required=True, max_length=200, default="")
     username = me.StringField(required=True, max_length=200, unique=True)
     password = me.StringField()
-    title_name = me.StringField(required=True)
     first_name = me.StringField(required=True, max_length=200)
     last_name = me.StringField(required=True, max_length=200)
     phone = me.StringField()

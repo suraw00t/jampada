@@ -8,4 +8,6 @@ from .items import (
     Item,
 )
 
-from .users import User
+from .users import User, UserCreate
+from .topics import Topic, TopicCreate
+from .sports import Sport, SportCreate
