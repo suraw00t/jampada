@@ -2,22 +2,26 @@ import React from 'react'
 import { useState } from 'react';
 
 export const Modal = () => {
+const [level, setLevel] = useState('');
+const [player, setPlayer] = useState('');
 const [time, setTime] = useState('');
-console.log('render time',time);
+const [place, setPlace] = useState('');
+const [info, setInfo] = useState('');
+
 
 const onSubmit = (e) => {
-    e.preventdefault();
-
-    const payload = {
-        time
-    }
+    e.preventDefault()
+    console.log('render time',time,level,player,place,info);
+    fetch(`https://jsonplaceholder.typicode.com/posts`,{level,player,time,place,info})
+    .then((response) => response.json())
+    .then((actualData) => console.log(actualData));
 }
 
   return (
     <div>
 
 
-<div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog" role="document">
     <div className="modal-content">
       <div className="modal-header">
@@ -29,35 +33,36 @@ const onSubmit = (e) => {
       
       <div className="modal-body"> 
         <form onSubmit={onSubmit}>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Level</option>
-                <option value="1">Beginner</option>
-                <option value="2">Intermediate</option>
-                <option value="3">Pro</option>
-                <option value="4">Experd</option>
+            <select  className="form-select" aria-label="Default select example" onChange={(e) => setLevel(e.target.value)}>
+                <option>Level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Pro">Pro</option>
+                <option value="Experd">Experd</option>
             </select> <br/><br/>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Player</option>
-                <option value="1">2 player</option>
-                <option value="2">3 player</option>
-                <option value="3">4 player</option>
-                <option value="4">More than 4 player</option>
+            <select defaultValue="1" className="form-select" aria-label="Default select example" onChange={(e) => setPlayer(e.target.value)}>
+                <option>Player</option>
+                <option value="2 player">2 player</option>
+                <option value="3 player">3 player</option>
+                <option value="4 player">4 player</option>
+                <option value="More than 4 player">More than 4 player</option>
+                
             </select> <br/><br/>
 
-            <div class="mb-3">
-                <label for="Time" class="form-label">Time</label>
-                <input type="time" class="form-control" id="Time" aria-describedby="emailHelp" onChange={(e) => setTime(e.target.value)}/>
+            <div className="mb-3">
+                <label htmlFor="Time" className="form-label">Time</label>
+                <input type="time" className="form-control" id="Time" aria-describedby="emailHelp" onChange={(e) => setTime(e.target.value)}/>
             </div>
-            <div class="mb-3">
-                <label for="Place" class="form-label">Place</label>
-                <input type="text" class="form-control" id="Place" aria-describedby="emailHelp"/>
+            <div className="mb-3">
+                <label htmlFor="Place" className="form-label">Place</label>
+                <input type="text" className="form-control" id="Place" aria-describedby="emailHelp" onChange={(e) => setPlace(e.target.value)}/>
             </div>
-            <div class="mb-3">
-                <label for="Info" class="form-label">รายละเอียดเพิ่มเติม</label>
-                <input type="text" class="form-control" id="Info" aria-describedby="emailHelp"/>
-                <div id="emailHelp" class="form-text">กรุณากรอกข้อมูลให้ครบ</div>
+            <div className="mb-3">
+                <label htmlFor="Info" className="form-label">รายละเอียดเพิ่มเติม</label>
+                <input type="text" className="form-control" id="Info" aria-describedby="emailHelp"onChange={(e) => setInfo(e.target.value)}/ >
+                <div id="emailHelp" className="form-text">กรุณากรอกข้อมูลให้ครบ</div>
             </div>
-            <button type="submit" class="btn btn-primary">สร้าง</button>
+            <button type="submit" className="btn btn-primary">สร้าง</button>
         </form>
       </div>
     </div>

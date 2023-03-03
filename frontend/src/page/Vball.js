@@ -1,7 +1,10 @@
 import React from 'react'
+import { Room } from '../component/Room'
 
 export const Vball = () => {
   return (
-    <div>vball</div>
+    <div>
+      <Room/>
+    </div>
   )
 }
