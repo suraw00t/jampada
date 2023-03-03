@@ -17,14 +17,13 @@ const Navigation = styled.header`
 export default function Nav() {
     return (
         <Navigation>
-            
             <div className="logo">
-                <Link to="/"><img src={psu} alt=""/></Link>
+                <Link to="/"><img src={psu} alt="" /></Link>
             </div>
             <div className="logo">
-                <Link to="/Signin"><img src={log1} alt=""/></Link>
+                <Link to="/Signin"><img src={log1} alt="" /></Link>
             </div>
-            <nav className = "nav">
+            <nav className="nav">
                 <ul>
                     <NavLink exact="true" className="active" to="/">
                         <li>Home</li>
@@ -34,7 +33,8 @@ export default function Nav() {
                     </NavLink>
                 </ul>
             </nav>
-        </Navigation>
+
+        </Navigation >
     )
 }
 
