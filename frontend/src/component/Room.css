@@ -2,6 +2,8 @@
     text-align: center;
     padding: 5rem;
     background-color: #5a76ef;
+    height: 350px;
+    max-height: 350px;
 }
 
 .card {

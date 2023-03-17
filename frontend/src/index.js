@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
-
+import DataProvider from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <DataProvider>
     <Router>
       <App />
     </Router>
-  </React.StrictMode>
+  </DataProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

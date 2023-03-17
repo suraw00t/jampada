@@ -11,7 +11,7 @@ const Navigation = styled.header`
    
     align-items:  center;
     height: 120px;
-    background: #5a76ef
+    background: #5a76ef;
 `;
 
 export default function Nav() {

@@ -3,3 +3,11 @@
     color:rgb(225, 0, 0)
 }
 
+.nav ul a{
+    list-style-type: none;    
+    color: white;
+    text-decoration: none;
+}
+.nav ul a:hover{
+    color: rgb(255, 145, 0);
+}
