@@ -33,7 +33,7 @@ export const Login = () => {
                     <Button variant="success">Register</Button>
                 </NavLink>
                 <Spacer y={1} />
-                <Button variant="warning" onClick={toRegister}>Google Login</Button>
+                {/* <Button variant="warning" onClick={toRegister}>Google Login</Button> */}
                 
         </div>
     </div>
