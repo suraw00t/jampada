@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useDeferredValue, useEffect } from 'react';
 import { Input, Spacer } from '@nextui-org/react';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import { register } from '../redux/actions/authAction'
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const initialState = {
     email: '',
     username: '',
@@ -16,6 +18,11 @@ export const Register = () => {
     phone: '',
   };
   const [userData, setUserData] = useState(initialState);
+  const navigate = useNavigate()
+  const { auth } = useSelector(state => state)
+  useEffect(() => {
+    if (auth.token) navigate("/");
+  }, [auth.token, navigate]);
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -25,10 +32,10 @@ export const Register = () => {
     });
   };
 
-  const handlelogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     console.log(userData);
-    dispatch(register({userData}))
+    dispatch(register({ data: userData }))
   };
   return (
     <div className='container h-100'>
@@ -37,7 +44,7 @@ export const Register = () => {
         <div className='row mx-auto col-md-12'>
           <div className='col-md-6'>
             <Input
-            bordered
+              bordered
               width='100%'
               labelPlaceholder='First Name'
               name='first_name'
@@ -45,7 +52,7 @@ export const Register = () => {
             />
             <Spacer y={2} />
             <Input
-            bordered
+              bordered
               width='100%'
               labelPlaceholder='Last Name'
               name='last_name'
@@ -53,7 +60,7 @@ export const Register = () => {
             />
             <Spacer y={2} />
             <Input
-            bordered
+              bordered
               width='100%'
               labelPlaceholder='Email'
               name='email'
@@ -65,7 +72,7 @@ export const Register = () => {
           </div>
           <div className='col-md-6'>
             <Input
-            bordered
+              bordered
               width='100%'
               labelPlaceholder='Telephone'
               name='phone'
@@ -73,7 +80,7 @@ export const Register = () => {
             />
             <Spacer y={2} />
             <Input
-            bordered
+              bordered
               width='100%'
               labelPlaceholder='Username'
               name='username'
@@ -81,7 +88,7 @@ export const Register = () => {
             />
             <Spacer y={2} />
             <Input.Password
-            bordered
+              bordered
               width='100%'
               labelPlaceholder='Password'
               name='password'
@@ -91,11 +98,11 @@ export const Register = () => {
           </div>
         </div>
         <Spacer y={1.6} />
-       <div className='mx-auto'>
-       <Button variant='success' onClick={handlelogin}>
-          Register
-        </Button>
-       </div>
+        <div className='mx-auto'>
+          <Button variant='success' onClick={handleRegister}>
+            Register
+          </Button>
+        </div>
       </div>
     </div>
   );

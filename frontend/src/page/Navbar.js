@@ -4,6 +4,9 @@ import log1 from '../images/log1.png'
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components'
+import { useSelector } from 'react-redux';
+import { logout } from '../redux/actions/authAction';
+import { useDispatch } from 'react-redux';
 
 const Navigation = styled.header`
     z-index: 1;
@@ -15,14 +18,24 @@ const Navigation = styled.header`
 `;
 
 export default function Nav() {
+    const { auth } = useSelector(state => state)
+    const dispatch = useDispatch()
+
+    function handleLogout() {
+        dispatch(logout())
+    }
+
     return (
         <Navigation>
             <div className="logo">
                 <Link to="/"><img src={psu} alt="" /></Link>
             </div>
-            <div className="logo">
-                <Link to="/Signin"><img src={log1} alt="" /></Link>
-            </div>
+            {
+                auth.user ? <button onClick={handleLogout} type="button" className="btn btn-danger">Logout</button> :
+                    <div className="logo">
+                        <Link to="/Signin"><img src={log1} alt="" /></Link>
+                    </div>
+            }
             <nav className="nav">
                 <ul>
                     <NavLink exact="true" className="active" to="/">
