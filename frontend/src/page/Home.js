@@ -13,37 +13,37 @@ const Home = () => {
     return (
         <div className="d-flex align-items-center justify-content-center">
             <ul style={{ "paddingLeft": "4.5em", "paddingRight": "2em" }}>
-                <NavLink activeclassname="active" to="/bad">
+                <NavLink activeclassname="active" to="/badminton">
                     <div className="box">
                         <img src={bad} alt="" />
                     </div>
                 </NavLink>
 
-                <NavLink activeclassname="active" to="/bball">
+                <NavLink activeclassname="active" to="/basketball">
                     <div className="box">
                         <img src={bball} alt="" />
                     </div>
                 </NavLink>
 
-                <NavLink activeclassname="active" to="/fball">
+                <NavLink activeclassname="active" to="/football">
                     <div className="box">
                         <img src={fball} alt="" />
                     </div>
                 </NavLink>
 
-                <NavLink activeclassname="active" to="/pong">
+                <NavLink activeclassname="active" to="/pingpong">
                     <div className="box">
                         <img src={pong} alt="" />
                     </div>
                 </NavLink>
 
-                <NavLink activeclassname="active" to="/ten">
+                <NavLink activeclassname="active" to="/tennis">
                     <div className="box">
                         <img src={ten} alt="" />
                     </div>
                 </NavLink>
 
-                <NavLink activeclassname="active" to="/vball">
+                <NavLink activeclassname="active" to="/volleyball">
                     <div className="box">
                         <img src={vball} alt="" />
                     </div>
