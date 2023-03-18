@@ -12,13 +12,7 @@ export const getDataAPI = async (url, token) => {
 
 export const postDataAPI = async (url, post, token) => {
   const res = await axios.post(
-    `${baseURL}/api/v1/${url}`,
-    post,
-    {
-      headers: { Authorization: token },
-      withCredentials: true
-    }
-  );
+    `${baseURL}/api/v1/${url}`, post);
   return res;
 };
 
