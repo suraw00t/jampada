@@ -10,6 +10,3 @@ class Sport(BaseModel):
     id: str
     name: str
     detail: str
-
-    class Config:
-        orm_mode = True
