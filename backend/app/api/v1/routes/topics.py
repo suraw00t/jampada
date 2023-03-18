@@ -24,3 +24,9 @@ async def get_all():
 @router.post("/join/{user_id}{topic_id}")
 async def join_topic(user_id, topic_id):
     return ""
+
+@router.delete("/delete/{topic_id}") #delete topic
+async def delete_topic(topic_id):
+    del_topic = models.Topic.objects.get(id = topic_id)
+    del_topic.delete() 
+    return {"message": "Delete topic successfull"}
