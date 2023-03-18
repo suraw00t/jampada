@@ -1,4 +1,10 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
+from starlette.status import (
+    HTTP_401_UNAUTHORIZED,
+    HTTP_404_NOT_FOUND,
+    HTTP_409_CONFLICT,
+)
+from mongoengine.errors import DoesNotExist
 from typing import List
 
 from app.schemas import Sport, SportCreate
@@ -7,22 +13,24 @@ import app.models as models
 router = APIRouter()
 
 
-@router.post("/create")
-async def create_sport(topic: SportCreate):
-    new_sport = models.Sport(**topic.dict())
+@router.post("/create/", response_model=Sport)
+async def create_sport(sport: SportCreate):
+    new_sport = models.Sport(**sport.dict())
     new_sport.save()
-    return {"message": "Create sport sucessfull"}
+    return Sport(id=str(new_sport.id), **new_sport.to_mongo().to_dict())
 
 
-@router.get("/all", response_model_by_alias=False)
-async def get_all() -> str:
-    sports = models.Sport.objects()
+@router.get("/all/", response_model=List[Sport])
+async def get_all():
+    sports = models.Sport.objects.all()
+    return [Sport(id=sport.id, **sport.to_mongo().to_dict()) for sport in sports]
 
-    return sports.to_json()
 
-
-@router.get("/{sport_id}", response_model_by_alias=False)
+@router.get("/{sport_id}", response_model=Sport)
 async def get_sport(sport_id: str):
-    sport = models.Sport.objects(id=sport_id).first()
+    try:
+        sport = models.Sport.objects.get(id=sport_id)
+    except DoesNotExist as e:
+        raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail=str(e))
 
-    return sport.to_json()
+    return Sport(id=str(sport.id), **sport.to_mongo().to_dict())
