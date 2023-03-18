@@ -5,9 +5,20 @@ from datetime import datetime
 
 class TopicCreate(BaseModel):
     name: str
-    level: str
     date_time: datetime
+    level: str
     place: str
+    player: str
+    type: str
+    detail: Optional[str] = None
+
+
+class TopicEdit(BaseModel):
+    date_time: datetime
+    level: str
+    place: str
+    player: str
+    type: str
     detail: Optional[str] = None
 
 
@@ -15,6 +26,8 @@ class Topic(BaseModel):
     id: str
     name: str
     level: str
+    player: str
     date_time: datetime
     place: str
+    type: str
     detail: Optional[str] = None
