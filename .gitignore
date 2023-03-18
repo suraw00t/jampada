@@ -26,6 +26,7 @@ yarn-error.log*
 
 *.swp
 *.conf
+*.env
 
 
 __pycache__/
