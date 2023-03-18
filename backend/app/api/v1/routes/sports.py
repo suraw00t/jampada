@@ -20,10 +20,10 @@ async def create_sport(sport: SportCreate):
     return Sport(id=str(new_sport.id), **new_sport.to_mongo().to_dict())
 
 
-@router.get("/all/", response_model=List[Sport])
+@router.get("/all", response_model=List[Sport])
 async def get_all():
     sports = models.Sport.objects.all()
-    return [Sport(id=sport.id, **sport.to_mongo().to_dict()) for sport in sports]
+    return [Sport(id=str(sport.id), **sport.to_mongo().to_dict()) for sport in sports]
 
 
 @router.get("/{sport_id}", response_model=Sport)
