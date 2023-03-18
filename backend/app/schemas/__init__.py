@@ -8,7 +8,7 @@ from .items import (
     Item,
 )
 
-from .users import User, UserCreate, UserLogin
+from .users import User, UserCreate, UserLogin, ListUser
 from .topics import Topic, TopicCreate
 from .sports import Sport, SportCreate
 from .tokens import CreateToken

@@ -18,8 +18,10 @@ export const Modal = ({ typename, data }) => {
   const API_PREFIX = "http://localhost:8000/api/v1"
 
   const onSubmit = async (e) => {
+    const loggedIn = localStorage.getItem('loggedIn');
+    const access_token = localStorage.getItem("access_token");
     e.preventDefault();
-    const response = await axios.post(API_PREFIX + "/topic/create", { name, date_time: time, level, player, detail: info, place, type: typename })
+    const response = await axios.post(API_PREFIX + "/topic/create?access_token=" + access_token, { name, date_time: time, level, player, detail: info, place, type: typename })
     console.log('render time', name, time, level, player, place, info);
     console.log(response)
     // window.location.href("/" + typename)

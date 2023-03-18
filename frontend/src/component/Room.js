@@ -24,6 +24,12 @@ export const Room = ({ response }) => {
     setEdit("")
   }
 
+  async function handleJoin(topic_type, topic_id) {
+    const access_token = localStorage.getItem("access_token");
+    const response = await axios.put("http://localhost:8000/api/v1/topic/join/" + topic_type + "/" + topic_id + "/", { token: access_token })
+    window.location.reload(false)
+  }
+
   const { auth } = useSelector(state => state)
   const navigate = useNavigate()
   // const location = useLocation();
@@ -59,6 +65,7 @@ export const Room = ({ response }) => {
                 >
                   Edit
                 </button>
+                <Button variant='btn btn-info' onClick={() => handleJoin(it.type, it.id)}>Join</Button>
                 <Button variant='btn btn-danger' onClick={() => handleDelete(it.id)}>Delete</Button>
               </div>
             </div>
