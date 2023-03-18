@@ -3,9 +3,9 @@
 # dependencies
 frontend/node_modules
 backend/venv
+*__pycache__/
 /.pnp
 .pnp.js
-*__pycache__/
 
 # testing
 /coverage
