@@ -11,3 +11,4 @@ from .items import (
 from .users import User, UserCreate, UserLogin
 from .topics import Topic, TopicCreate
 from .sports import Sport, SportCreate
+from .tokens import CreateToken
