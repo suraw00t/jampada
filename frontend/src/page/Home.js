@@ -7,7 +7,11 @@ import pong from '../images/pong.png'
 import ten from '../images/ten.png'
 import vball from '../images/vball.png'
 import { NavLink } from 'react-router-dom'
+import axios from "axios";
 
+const API_PREFIX = 'http://localhost:8000/api/v1';
+const response = await axios.get(API_PREFIX + "/sport/all");
+console.log(response)
 
 const Home = () => {
     return (

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from starlette.status import (
     HTTP_401_UNAUTHORIZED,
     HTTP_404_NOT_FOUND,
@@ -8,8 +8,13 @@ from mongoengine.errors import DoesNotExist
 import datetime
 from typing import List
 
-from app.schemas import Topic, TopicCreate
-import app.models as models
+from app.core.deps import (
+    get_current_user,
+    get_current_active_user,
+    get_current_active_superuser,
+)
+from app import models
+from app.schemas import Topic, TopicCreate, User
 
 router = APIRouter()
 
@@ -37,9 +42,10 @@ async def get_single_topic(topic_id: str):
     return Topic(id=str(topic.id), **topic.to_mongo().to_dict())
 
 
-@router.post("/join/{user_id}{topic_id}")
-async def join_topic(user_id, topic_id):
-    return ""
+@router.post("/join", response_model=Topic)
+async def join_topic(topic_id: str, current_user: User = Depends(get_current_user)):
+    print(current_user)
+    return {"": ""}
 
 
 @router.delete("/delete/{topic_id}", response_model=Topic)  # delete topic

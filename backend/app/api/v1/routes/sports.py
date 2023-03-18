@@ -7,8 +7,8 @@ from starlette.status import (
 from mongoengine.errors import DoesNotExist
 from typing import List
 
+from app import models
 from app.schemas import Sport, SportCreate
-import app.models as models
 
 router = APIRouter()
 
