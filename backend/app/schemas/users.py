@@ -24,3 +24,8 @@ class User(BaseModel):
     first_name: str
     last_name: str
     phone: str
+
+
+class ListUser(BaseModel):
+    id: str
+    username: str

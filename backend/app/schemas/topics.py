@@ -1,6 +1,7 @@
 from typing import List, Dict, Optional
 from pydantic import BaseModel
 from datetime import datetime
+from . import User, ListUser
 
 
 class TopicCreate(BaseModel):
@@ -30,4 +31,5 @@ class Topic(BaseModel):
     date_time: datetime
     place: str
     type: str
+    # member: Optional[str] = None
     detail: Optional[str] = None
