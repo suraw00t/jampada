@@ -45,7 +45,6 @@ async def get_user(user_id):
 
 @router.post("/login")
 async def login(user: UserLogin, response: Response):
-    print("Hello")
     user_db = models.User.objects(username=user.username).first()
     if not user_db:
         raise HTTPException(
@@ -56,7 +55,7 @@ async def login(user: UserLogin, response: Response):
             status_code=HTTP_400_BAD_REQUEST, detail="Invalid username or password"
         )
     access_token = create_access_token(
-        subject=user.username,
+        subject=user_db.id,
     )
     response.set_cookie(key="access_token", value=access_token, httponly=True)
     print(response.__dict__)
