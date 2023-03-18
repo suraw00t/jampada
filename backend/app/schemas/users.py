@@ -11,6 +11,11 @@ class UserCreate(BaseModel):
     phone: str
 
 
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+
 class User(BaseModel):
     id: str
     email: str
