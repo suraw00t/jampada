@@ -8,12 +8,13 @@ import ten from '../images/ten.png'
 import vball from '../images/vball.png'
 import { NavLink } from 'react-router-dom'
 
+
 const Home = () => {
     return (
         <div className="d-flex align-items-center justify-content-center">
             <ul style={{ "paddingLeft": "4.5em", "paddingRight": "2em" }}>
                 <NavLink activeclassname="active" to="/bad">
-                    <div classiName="box">
+                    <div className="box">
                         <img src={bad} alt="" />
                     </div>
                 </NavLink>
