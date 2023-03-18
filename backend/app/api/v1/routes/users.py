@@ -7,6 +7,7 @@ from starlette.status import (
     HTTP_422_UNPROCESSABLE_ENTITY,
 )
 from mongoengine.errors import DoesNotExist, NotUniqueError
+from datetime import timedelta
 
 from app import models
 from app.core import deps, create_access_token, create_logs, create_refresh_token
@@ -44,6 +45,7 @@ async def get_user(user_id):
 
 @router.post("/login")
 async def login(user: UserLogin, response: Response):
+    print("Hello")
     user_db = models.User.objects(username=user.username).first()
     if not user_db:
         raise HTTPException(
@@ -54,7 +56,7 @@ async def login(user: UserLogin, response: Response):
             status_code=HTTP_400_BAD_REQUEST, detail="Invalid username or password"
         )
     access_token = create_access_token(
-        subject=user.username, expires_delta=ACCESS_TOKEN_EXPIRE_MINUTES
+        subject=user.username,
     )
     response.set_cookie(key="access_token", value=access_token, httponly=True)
     print(response.__dict__)

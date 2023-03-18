@@ -3,7 +3,10 @@ from typing import Any
 
 from jose import jwt
 
-from app.core import settings
+# from app.core import settings
+from app.core.config import AppSettings
+
+settings = AppSettings()
 
 ALGORITHM = "HS256"
 
