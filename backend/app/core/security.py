@@ -37,3 +37,8 @@ def create_refresh_token(
     to_encode = {"exp": expire, "sub": str(subject), "data": data}
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
+
+
+def verify_token(token: str):
+    decode_jwt = jwt.decode(token=token, algorithms=ALGORITHM, key=settings.SECRET_KEY)
+    return decode_jwt
