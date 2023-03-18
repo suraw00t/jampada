@@ -18,24 +18,13 @@ router = APIRouter()
 async def create_topic(topic: TopicCreate):
     new_topic = models.Topic(**topic.dict())
     new_topic.save()
-    return Topic(
-        id=str(new_topic.id),
-        # date_time=str(new_topic.date_time),
-        **new_topic.to_mongo().to_dict()
-    )
+    return Topic(id=str(new_topic.id), **new_topic.to_mongo().to_dict())
 
 
 @router.get("/all", response_model_by_alias=False, response_model=List[Topic])
 async def get_all():
     topics = models.Topic.objects.all()
-    return [
-        Topic(
-            id=str(topic.id),
-            date_time=str(topic.date_time),
-            **topic.to_mongo().to_dict()
-        )
-        for topic in topics
-    ]
+    return [Topic(id=str(topic.id), **topic.to_mongo().to_dict()) for topic in topics]
 
 
 @router.get("/{topic_id}", response_model_by_alias=False, response_model=Topic)
@@ -45,11 +34,7 @@ async def get_single_topic(topic_id: str):
     except DoesNotExist as e:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail=str(e))
     print(topic.date_time.isoformat())
-    return Topic(
-        id=str(topic.id),
-        date_time=topic.date_time.isoformat(),
-        **topic.to_mongo().to_dict()
-    )
+    return Topic(id=str(topic.id), **topic.to_mongo().to_dict())
 
 
 @router.post("/join/{user_id}{topic_id}")
@@ -64,8 +49,4 @@ async def delete_topic(topic_id):
     except DoesNotExist as e:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail=str(e))
     del_topic.delete()
-    return Topic(
-        id=str(del_topic.id),
-        date_time=str(del_topic.date_time),
-        **del_topic.to_mongo().to_dict()
-    )
+    return Topic(id=str(del_topic.id), **del_topic.to_mongo().to_dict())
