@@ -42,6 +42,8 @@ Back-end ใช้ FastAPI และ Database ใช้ MongoDB
 |unjoin Topic       | API สำหรับการยกเลิกการเข้าร่วม Topic
 |Delete Topic       | API สำหรับลบ topic
 
+
+![](imgs/API.png)
 Tree
 -------
 jampada
