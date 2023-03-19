@@ -3,7 +3,6 @@
 # dependencies
 frontend/node_modules
 backend/venv
-backend/*.env
 *__pycache__/
 /.pnp
 .pnp.js
@@ -33,4 +32,3 @@ yarn-error.log*
 __pycache__/
 *.py[cod]
 *$py.class
-backend/.env
