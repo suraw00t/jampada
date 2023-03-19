@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 
-export const Room = ({ response }) => {
+export const Room = ({ response, user_id }) => {
   const { pathname } = useLocation();
   async function handleDelete(topic_id) {
     console.log(topic_id)
@@ -17,8 +17,8 @@ export const Room = ({ response }) => {
 
   const [edit, setEdit] = useState([])
   async function handleEdit(topic_id, topic_type) {
-    const response = await axios.get("http://localhost:8000/api/v1/topic/" + topic_type + "/" + topic_id)
-    setEdit(response.data)
+    const res = await axios.get("http://localhost:8000/api/v1/topic/" + topic_type + "/" + topic_id)
+    setEdit(res.data)
   }
   const resetForm = () => {
     setEdit("")
@@ -26,7 +26,13 @@ export const Room = ({ response }) => {
 
   async function handleJoin(topic_type, topic_id) {
     const access_token = localStorage.getItem("access_token");
-    const response = await axios.put("http://localhost:8000/api/v1/topic/join/" + topic_type + "/" + topic_id + "/", { token: access_token })
+    const res = await axios.put("http://localhost:8000/api/v1/topic/join/" + topic_type + "/" + topic_id + "/", { token: access_token })
+    window.location.reload(false)
+  }
+
+  async function handleUnjoin(topic_type, topic_id) {
+    const access_token = localStorage.getItem("access_token");
+    const res = await axios.put("http://localhost:8000/api/v1/topic/unjoin/" + topic_type + "/" + topic_id + "/", { token: access_token })
     window.location.reload(false)
   }
 
@@ -54,6 +60,7 @@ export const Room = ({ response }) => {
                 <p>Time: {it.date_time}</p>
                 <p>Place: {it.place}</p>
                 <p>Detail: {it.detail ? it.detail : "-"}</p>
+                <p>Joined: {it?.member.length}</p>
               </div>
               <div className='setButton d-flex justify-content-between'>
                 <button
@@ -65,7 +72,11 @@ export const Room = ({ response }) => {
                 >
                   Edit
                 </button>
-                <Button variant='btn btn-info' onClick={() => handleJoin(it.type, it.id)}>Join</Button>
+                {it.member.map(it2 => (
+                  it2 ? "" : ""
+                )) && it.member.length > 0 ? <Button variant='btn btn-warning' onClick={() => handleUnjoin(it.type, it.id)}>Unjoin</Button> :
+                  <Button variant='btn btn-info' onClick={() => handleJoin(it.type, it.id)}>Join</Button>
+                }
                 <Button variant='btn btn-danger' onClick={() => handleDelete(it.id)}>Delete</Button>
               </div>
             </div>
