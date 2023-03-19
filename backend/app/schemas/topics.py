@@ -31,5 +31,5 @@ class Topic(BaseModel):
     date_time: datetime
     place: str
     type: str
-    # member: Optional[str] = None
+    member: Optional[List[ListUser]]
     detail: Optional[str] = None

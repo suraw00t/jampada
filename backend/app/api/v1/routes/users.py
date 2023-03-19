@@ -43,7 +43,7 @@ async def create_user(user: UserCreate):
     return {"access_token": access_token, "user": new_user.username}
 
 
-@router.get("/{user_id}", response_model_by_alias=False, response_model=User)
+@router.get("/id/{user_id}", response_model_by_alias=False, response_model=User)
 async def get_user(user_id):
     try:
         user = models.User.objects.get(id=user_id)
@@ -72,7 +72,7 @@ async def login(user: UserLogin):
 
 
 @router.post("/refresh_token")
-async def login(token: CreateToken, request: Request):
+async def login(token: CreateToken):
     decode_jwt = verify_token(token.token)
     user_id = decode_jwt.get("sub")
     try:
@@ -82,3 +82,10 @@ async def login(token: CreateToken, request: Request):
     refresh_token = create_refresh_token(subject=user.id)
     # response.set_cookie(key="access_token", value=access_token, httponly=True)
     return {"access_token": refresh_token, "user": user.username}
+
+
+@router.get("/get")
+async def get_user_id_by_access_token(token: str):
+    decode_jwt = verify_token(token)
+    user_id = decode_jwt.get("sub")
+    return {"user_id": user_id}
