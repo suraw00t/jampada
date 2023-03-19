@@ -8,6 +8,40 @@
 # 311-web
 ##240-311 Web Tech
 
+# Project Jampada : Sportifriend
+
+## อธิบายการทำงาน
+เป็น web application ที่ใช้สำหรับหาเพื่อนเล่นกีฬาภายในมหาวิทยาลัย
+Front-end ใช้ React.js เป็น Framework 
+|Function                |   Detail                 |
+|----------------|-------------------------------|-----------------------------|
+|Login			 |          ลงชื่อเข้าใช้    |      
+|Register        |สมัครใช้งาน
+|Room       |เป็นห้องที่แสดงว่ามีการจองกี่ห้อง
+|Sport      |ประเภทของกีฬา
+|Topic       |หัวข้อ กระทู้
+|Post      |ใช้สร้างกระทู้ สามารถใส่ชื่อ ระดับความสามารถ เวลาและสถานที่นัด รายละเอียดเพิ่มเติม
+|Edit    |แก้ไขกระทู้
+|Join   |เข้าร่วมกีฬาที่สนใจ
+|Delete   |ลบกระทู้
+
+Back-end ใช้ FastAPI และ Database ใช้ MongoDB
+|       Function       |Detail|
+|----------------|-------------------------------|
+|Create User| API สร้าง user
+|Get User       | API แสดง User
+|Login         | API login
+|refresh_token    | Generate token ใหม่ขึ้นมา
+|Get User Id By Access Token         |API แสดง user id โดย Access token
+|Create topic       |  API สร้าง Topic
+|Edit Topic     | API แก้ไข Topic
+|Get All       | API แสดง Topic ทั้งหมด
+|Get Topic By Type      | API แสดง Topic by type
+|Get Single Topic      | API แสดง Topic 1 topic
+|Join Topic       |  API สำหรับการเข้าร่วม topic
+|unjoin Topic       | API สำหรับการยกเลิกการเข้าร่วม Topic
+|Delete Topic       | API สำหรับลบ topic
+
 Tree
 -------
 jampada
@@ -135,4 +169,3 @@ jampada
 └── scripts
     ├── run-backend.sh
     └── run-frontend.sh
-
