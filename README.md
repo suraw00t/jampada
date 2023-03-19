@@ -1,22 +1,29 @@
 # jampada project
+
+#### จำปาดะ
+
+```
 ** Initial Project **
-- 1. python3 -m venv backend/venv and activate the python virtual environment
-- 2. cd backend/
-- 3. poetry install
-- 4. cd to frontend
-- 5. npm install
-# 311-web
-##240-311 Web Tech
+- 1. cd backend/
+- 2. python3 -m venv backend/venv 
+- 3. activate the python virtual environment
+- 4. pip install poetry && poetry install
+- 5. script/run-api
+- 6. cd to frontend/
+- 7. npm install
+- 8. npm start
+```
 
 # Project Jampada : Sportifriend
 
 ## อธิบายการทำงาน
+
 เป็น web application ที่ใช้สำหรับหาเพื่อนเล่นกีฬาภายในมหาวิทยาลัย
-Front-end ใช้ React.js เป็น Framework 
+Front-end ใช้ React.js เป็น Framework
 
 |Function                |   Detail                 |
 |----------------|-------------------------------|
-|Login			 |          ลงชื่อเข้าใช้    |      
+|Login    |          ลงชื่อเข้าใช้    |
 |Register        |สมัครใช้งาน
 |Room       |เป็นห้องที่แสดงว่ามีการจองกี่ห้อง
 |Sport      |ประเภทของกีฬา
@@ -26,7 +33,7 @@ Front-end ใช้ React.js เป็น Framework
 |Join   |เข้าร่วมกีฬาที่สนใจ
 |Delete   |ลบกระทู้
 
-Back-end ใช้ FastAPI และ Database ใช้ MongoDB
+Back-end ใช้ FastAPI และ Database ใช้ MongoDB โดยใช้ models ของ mongoengine
 |       Function       |Detail|
 |----------------|-------------------------------|
 |Create User| API สร้าง user
@@ -43,9 +50,9 @@ Back-end ใช้ FastAPI และ Database ใช้ MongoDB
 |unjoin Topic       | API สำหรับการยกเลิกการเข้าร่วม Topic
 |Delete Topic       | API สำหรับลบ topic
 
+ใช้การ hash รหัสผ่านก่อนบันทึกใน database ใช้ schema ของ bcrypt ในการ hash ใช้ access token ในการจัดการข้อมูลตามสิทธิ์ที่ได้รับการเข้าถึง และมีการ compress ข้อมูลจาก backend เมื่อมีขนาดมากกว่า 1000 bytes
 
 ![API](imgs/API.png)
-
 
 --------สมาชิกในกลุ่ม-----------------
 
@@ -56,7 +63,9 @@ Back-end ใช้ FastAPI และ Database ใช้ MongoDB
 6310110533 นายสุรวุฒิ สายทองอินทร์
 
 ## Tree
+
 -------
+
 ```jampada
 ├── backend
 │   ├── app

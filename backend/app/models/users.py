@@ -14,12 +14,12 @@ class User(me.Document):
             "#username",
         ],
     }
-    email = me.StringField(required=True, max_length=200, default="")
-    username = me.StringField(required=True, max_length=200, unique=True)
+    email = me.StringField(required=True, max_length=200, min_length=5)
+    username = me.StringField(required=True, max_length=200, unique=True, min_length=6)
     password = me.StringField()
-    first_name = me.StringField(required=True, max_length=200)
-    last_name = me.StringField(required=True, max_length=200)
-    phone = me.StringField()
+    first_name = me.StringField(required=True, max_length=200, min_length=1)
+    last_name = me.StringField(required=True, max_length=200, min_length=1)
+    phone = me.StringField(min_length=9)
     # picture = me.ImageField(thumbnail_size=(800, 600, True))
     status = me.StringField(required=True, default="active", max_length=15)
     roles = me.ListField(me.StringField(), default=["user"])
