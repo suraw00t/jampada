@@ -28,12 +28,12 @@ router = APIRouter()
 @router.post("/create")
 async def create_user(user: UserCreate):
     if not (
-        user.username
-        or user.password
-        or user.first_name
-        or user.last_name
-        or user.email
-        or user.phone
+        len(user.username) < 6
+        or len(user.password) < 8
+        or len(user.first_name) < 1
+        or len(user.last_name) < 1
+        or len(user.email) < 1
+        or len(user.phone) < 9
     ):
         raise HTTPException(
             status_code=HTTP_422_UNPROCESSABLE_ENTITY, detail="Not valid user data"
