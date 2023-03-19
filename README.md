@@ -43,7 +43,7 @@ Back-end ใช้ FastAPI และ Database ใช้ MongoDB
 |Delete Topic       | API สำหรับลบ topic
 
 
-![](imgs/API.png)
+![API](imgs/API.png)
 Tree
 -------
 ```jampada
