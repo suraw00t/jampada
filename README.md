@@ -25,32 +25,32 @@ Front-end ใช้ React.js เป็น Framework
 
 |Function                |   Detail                 |
 |----------------|-------------------------------|
-|Login    |          ลงชื่อเข้าใช้    |
+|Login           |          ลงชื่อเข้าใช้    |
 |Register        |สมัครใช้งาน
-|Room       |เป็นห้องที่แสดงว่ามีการจองกี่ห้อง
-|Sport      |ประเภทของกีฬา
-|Topic       |หัวข้อ กระทู้
-|Post      |ใช้สร้างกระทู้ สามารถใส่ชื่อ ระดับความสามารถ เวลาและสถานที่นัด รายละเอียดเพิ่มเติม
-|Edit    |แก้ไขกระทู้
-|Join   |เข้าร่วมกีฬาที่สนใจ
-|Delete   |ลบกระทู้
+|Room            |เป็นห้องที่แสดงว่ามีการจองกี่ห้อง
+|Sport           |ประเภทของกีฬา
+|Topic           |หัวข้อ กระทู้
+|Post            |ใช้สร้างกระทู้ สามารถใส่ชื่อ ระดับความสามารถ เวลาและสถานที่นัด รายละเอียดเพิ่มเติม
+|Edit            |แก้ไขกระทู้
+|Join            |เข้าร่วมกีฬาที่สนใจ
+|Delete          |ลบกระทู้
 
 Back-end ใช้ FastAPI และ Database ใช้ MongoDB โดยใช้ models ของ mongoengine
-|       Function       |Detail|
-|----------------|-------------------------------|
-|Create User| API สร้าง user
-|Get User       | API แสดง User
-|Login         | API login
-|refresh_token    | Generate token ใหม่ขึ้นมา
-|Get User Id By Access Token         |API แสดง user id โดย Access token
-|Create topic       |  API สร้าง Topic
-|Edit Topic     | API แก้ไข Topic
-|Get All       | API แสดง Topic ทั้งหมด
-|Get Topic By Type      | API แสดง Topic by type
-|Get Single Topic      | API แสดง Topic 1 topic
-|Join Topic       |  API สำหรับการเข้าร่วม topic
-|unjoin Topic       | API สำหรับการยกเลิกการเข้าร่วม Topic
-|Delete Topic       | API สำหรับลบ topic
+|       Function           |Detail|
+|-----------------------------|-------------------------------|
+|Create User                  | API สร้าง user
+|Get User                     | API แสดง User
+|Login                        | API login
+|refresh_token                | Generate token ใหม่ขึ้นมา
+|Get User Id By Access Token  |API แสดง user id โดย Access token
+|Create topic                 |  API สร้าง Topic
+|Edit Topic                   | API แก้ไข Topic
+|Get All                      | API แสดง Topic ทั้งหมด
+|Get Topic By Type            | API แสดง Topic by type
+|Get Single Topic             | API แสดง Topic 1 topic
+|Join Topic                   |  API สำหรับการเข้าร่วม topic
+|unjoin Topic                 | API สำหรับการยกเลิกการเข้าร่วม Topic
+|Delete Topic                 | API สำหรับลบ topic
 
 ใช้การ hash รหัสผ่านก่อนบันทึกใน database ใช้ schema ของ bcrypt ในการ hash ใช้ access token ในการจัดการข้อมูลตามสิทธิ์ที่ได้รับการเข้าถึง และมีการ compress ข้อมูลจาก backend เมื่อมีขนาดมากกว่า 1000 bytes
 
