@@ -60,19 +60,19 @@ async def edit_topic(topic_type: str, topic_id: str, topic: TopicCreate):
     topic_db.date_time = topic.date_time
     topic_db.save()
     members = []
-    for member in topic.member:
+    for member in topic_db.member:
         mem = ListUser(id=str(member.id), username=member.username)
         members.append(mem)
     return Topic(
-        id=str(topic.id),
+        id=str(topic_db.id),
         member=members,
-        level=topic.level,
-        place=topic.place,
-        player=topic.player,
-        date_time=topic.date_time,
-        detail=topic.detail,
-        type=topic.type,
-        name=topic.name,
+        level=topic_db.level,
+        place=topic_db.place,
+        player=topic_db.player,
+        date_time=topic_db.date_time,
+        detail=topic_db.detail,
+        type=topic_db.type,
+        name=topic_db.name,
     )
 
 
