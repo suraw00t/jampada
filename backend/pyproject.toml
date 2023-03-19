@@ -14,6 +14,7 @@ loguru = "^0.6.0"
 python-jose = "^3.3.0"
 pydantic =  { version = "^1.9", extras = ["dotenv"] }
 authlib = "^1.2.0"
+bcrypt = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 
