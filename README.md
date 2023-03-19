@@ -5,7 +5,7 @@
 ```
 ** Initial Project **
 - 1. cd backend/
-- 2. python3 -m venv backend/venv 
+- 2. python3 -m venv venv 
 - 3. activate the python virtual environment
 - 4. pip install poetry && poetry install
 - 5. script/run-api
