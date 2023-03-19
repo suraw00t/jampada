@@ -27,7 +27,7 @@ router = APIRouter()
 
 @router.post("/create")
 async def create_user(user: UserCreate):
-    if not (
+    if (
         len(user.username) < 6
         or len(user.password) < 8
         or len(user.first_name) < 1
