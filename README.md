@@ -18,7 +18,7 @@
 
 ## อธิบายการทำงาน
 
-[YouTube] : https://youtu.be/tKEqlfiVa0k
+ลิงก์วิดีโอ [YouTube](https://youtu.be/tKEqlfiVa0k)
 
 เป็น web application ที่ใช้สำหรับหาเพื่อนเล่นกีฬาภายในมหาวิทยาลัย
 Front-end ใช้ React.js เป็น Framework
