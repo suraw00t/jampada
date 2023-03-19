@@ -21,17 +21,31 @@ router = APIRouter()
 
 
 @router.post("/create", response_model=Topic)
-async def create_topic(access_token: str, topic: TopicCreate):
+async def create_topic(access_token: str, topic_schema: TopicCreate):
     decode_jwt = verify_token(access_token)
     user_id = decode_jwt.get("sub")
     try:
         user = models.User.objects.get(id=user_id)
     except DoesNotExist as e:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail=str(e))
-    new_topic = models.Topic(**topic.dict())
-    new_topic.owner = user
-    new_topic.save()
-    return Topic(id=str(new_topic.id), **new_topic.to_mongo().to_dict())
+    topic = models.Topic(**topic_schema.dict())
+    topic.owner = user
+    topic.save()
+    members = []
+    for member in topic.member:
+        mem = ListUser(id=str(member.id), username=member.username)
+        members.append(mem)
+    return Topic(
+        id=str(topic.id),
+        member=members,
+        level=topic.level,
+        place=topic.place,
+        player=topic.player,
+        date_time=topic.date_time,
+        detail=topic.detail,
+        type=topic.type,
+        name=topic.name,
+    )
 
 
 @router.put("/edit/{topic_type}/{topic_id}", response_model=Topic)
@@ -45,13 +59,46 @@ async def edit_topic(topic_type: str, topic_id: str, topic: TopicCreate):
     topic_db.detail = topic.detail
     topic_db.date_time = topic.date_time
     topic_db.save()
-    return Topic(id=str(topic_db.id), **topic_db.to_mongo().to_dict())
+    members = []
+    for member in topic.member:
+        mem = ListUser(id=str(member.id), username=member.username)
+        members.append(mem)
+    return Topic(
+        id=str(topic.id),
+        member=members,
+        level=topic.level,
+        place=topic.place,
+        player=topic.player,
+        date_time=topic.date_time,
+        detail=topic.detail,
+        type=topic.type,
+        name=topic.name,
+    )
 
 
 @router.get("/all", response_model=List[Topic])
 async def get_all():
     topics = models.Topic.objects.all()
-    return [Topic(id=str(topic.id), **topic.to_mongo().to_dict()) for topic in topics]
+    topics_schema = []
+    for topic in topics:
+        members = []
+        for member in topic.member:
+            mem = ListUser(id=str(member.id), username=member.username)
+            members.append(mem)
+        top = Topic(
+            id=str(topic.id),
+            member=members,
+            level=topic.level,
+            place=topic.place,
+            player=topic.player,
+            date_time=topic.date_time,
+            detail=topic.detail,
+            type=topic.type,
+            name=topic.name,
+        )
+        topics_schema.append(top)
+
+    return topics_schema
 
 
 @router.get("/{topic_type}", response_model=List[Topic])
@@ -90,9 +137,19 @@ async def get_single_topic(topic_type: str, topic_id: str):
         raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail="No topics data")
     members = []
     for member in topic.member:
-        members.append(ListUser(id=str(member.id), username=member.username))
-    print(members)
-    return Topic(id=str(topic.id), **topic.to_mongo().to_dict())
+        mem = ListUser(id=str(member.id), username=member.username)
+        members.append(mem)
+    return Topic(
+        id=str(topic.id),
+        member=members,
+        level=topic.level,
+        place=topic.place,
+        player=topic.player,
+        date_time=topic.date_time,
+        detail=topic.detail,
+        type=topic.type,
+        name=topic.name,
+    )
 
 
 @router.put("/join/{topic_type}/{topic_id}/", response_model=Topic)
